@@ -25,7 +25,14 @@ const Navbar = () => {
               className="collapse navbar-collapse"
               id="navbarSupportedContent"
             >
-              <ul className="navbar-nav ms-auto mb-2 mb-lg-0" />
+              <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li>
+                  <NavLink to="/add">Add Data</NavLink>
+                </li>{' '}
+                <li>
+                  <NavLink to="/data">Show Data</NavLink>
+                </li>
+              </ul>
             </div>
           </div>
         </nav>
