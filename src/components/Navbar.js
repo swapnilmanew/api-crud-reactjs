@@ -27,10 +27,14 @@ const Navbar = () => {
             >
               <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li>
-                  <NavLink to="/add">Add Data</NavLink>
+                  <NavLink className="nav-link" to="/">
+                    Add Data
+                  </NavLink>
                 </li>{' '}
                 <li>
-                  <NavLink to="/data">Show Data</NavLink>
+                  <NavLink className="nav-link" to="/data">
+                    Show Data
+                  </NavLink>
                 </li>
               </ul>
             </div>
