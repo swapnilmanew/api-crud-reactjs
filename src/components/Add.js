@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
 
 const Add = () => {
   const [title, setTitle] = useState('');
@@ -85,12 +86,21 @@ const Add = () => {
                         <td> {book.title} </td>
                         <td> {book.author} </td>
                         <td>
-                          <a href="#" className="btn btn-primary">
+                          <NavLink
+                            to="/edit/{book.id}"
+                            className="btn btn-primary"
+                          >
                             Edit
-                          </a>
-                          <a href="#" className="btn btn-danger">
+                          </NavLink>
+                        </td>
+
+                        <td>
+                          <NavLink
+                            to="/delete/{book.id}"
+                            className="btn btn-danger"
+                          >
                             Delete
-                          </a>
+                          </NavLink>
                         </td>
                       </tr>
                     </>

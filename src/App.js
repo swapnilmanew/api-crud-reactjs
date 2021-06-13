@@ -13,7 +13,7 @@ export default function App() {
       <BrowserRouter>
         <Navbar />
         <Switch>
-          <Route exact path="/add" component={Add} />
+          <Route exact path="/" component={Add} />
           <Route exact path="/edit" component={Edit} />
           <Route exact path="/data" component={Data} />
         </Switch>
