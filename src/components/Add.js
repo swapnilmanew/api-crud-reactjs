@@ -1,26 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
 const Add = () => {
-  const [title, setTitle] = useState('');
-  const [author, setAuthor] = useState('');
+  let history = useHistory();
+
+  const [bookData, setBookData] = useState({
+    title: '',
+    author: ''
+  });
+  const { title, author } = bookData;
+  const onInputChange = e => {
+    setBookData({ ...bookData, [e.target.name]: [e.target.value] });
+  };
 
   const addData = () => {
-    let data = { title, author };
-    fetch('http://localhost:3000/posts/', {
-      method: 'POST',
-      headers: {
-        accept: 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
-    })
-      .then(res => {
-        console.log(res);
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    await axios.post("http://localhost:3000/posts", bookData);
+    history.push('/data');
   };
 
   return (
@@ -36,7 +32,7 @@ const Add = () => {
                   className="form-control"
                   placeholder="Book Title"
                   value={title}
-                  onChange={e => setTitle(e.target.value)}
+                  onChange={e => onInputChange(e)}
                 />
                 <br />
                 <input
@@ -44,7 +40,7 @@ const Add = () => {
                   className="form-control"
                   placeholder="Author"
                   value={author}
-                  onChange={e => setAuthor(e.target.value)}
+                  onChange={e => onInputChange(e)}
                 />
                 <br />
                 <button className="btn btn-primary" onClick={addData}>
