@@ -11,10 +11,10 @@ const Add = () => {
   });
   const { title, author } = user;
   const onInputChange = e => {
-    setUser({ ...bookData, [e.target.name]: [e.target.value] });
+    setUser({ ...user, [e.target.name]: [e.target.value] });
   };
 
-  const addData = async () => {
+  const addData = async (e) => {
     await axios.post('http://localhost:3000/posts', user);
     history.push('/data');
   };
