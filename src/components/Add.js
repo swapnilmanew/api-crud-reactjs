@@ -5,17 +5,17 @@ import axios from 'axios';
 const Add = () => {
   let history = useHistory();
 
-  const [bookData, setBookData] = useState({
+  const [user, setUser] = useState({
     title: '',
     author: ''
   });
-  const { title, author } = bookData;
+  const { title, author } = user;
   const onInputChange = e => {
-    setBookData({ ...bookData, [e.target.name]: [e.target.value] });
+    setUser({ ...bookData, [e.target.name]: [e.target.value] });
   };
 
   const addData = async () => {
-    await axios.post('http://localhost:3000/posts', bookData);
+    await axios.post('http://localhost:3000/posts', user);
     history.push('/data');
   };
 
