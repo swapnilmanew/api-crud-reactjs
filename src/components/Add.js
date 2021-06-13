@@ -14,8 +14,8 @@ const Add = () => {
     setBookData({ ...bookData, [e.target.name]: [e.target.value] });
   };
 
-  const addData = () => {
-    await axios.post("http://localhost:3000/posts", bookData);
+  const addData = async () => {
+    await axios.post('http://localhost:3000/posts', bookData);
     history.push('/data');
   };
 
