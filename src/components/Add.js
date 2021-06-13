@@ -5,16 +5,12 @@ import axios from 'axios';
 const Add = () => {
   let history = useHistory();
 
-  const [user, setUser] = useState({
-    title: '',
-    author: ''
-  });
-  const { title, author } = user;
-  const onInputChange = e => {
-    setUser({ ...user, [e.target.name]: [e.target.value] });
-  };
+  const [title, setTitle] = useState('');
+  const [author, setAuthor] = useState('');
 
-  const addData = async (e) => {
+  const user = { title, author };
+
+  const addData = async e => {
     await axios.post('http://localhost:3000/posts', user);
     history.push('/data');
   };
@@ -32,7 +28,7 @@ const Add = () => {
                   className="form-control"
                   placeholder="Book Title"
                   value={title}
-                  onChange={e => onInputChange(e)}
+                  onChange={e => setTitle(e.target.value)}
                 />
                 <br />
                 <input
@@ -40,7 +36,7 @@ const Add = () => {
                   className="form-control"
                   placeholder="Author"
                   value={author}
-                  onChange={e => onInputChange(e)}
+                  onChange={e => setAuthor(e.target.value)}
                 />
                 <br />
                 <button className="btn btn-primary" onClick={addData}>

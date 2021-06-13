@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-
+import axios from 'axios';
 const Data = () => {
   const [books, setBooks] = useState([]);
 
   const getData = async () => {
-    const response = await fetch('http://localhost:3000/posts');
-    const data = await response.json();
+    const data = await axios.get('http://localhost:3000/posts');
     setBooks(data);
+    console.log(data);
   };
 
   useEffect(() => {
